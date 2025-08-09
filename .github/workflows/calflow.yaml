@@ -2,15 +2,13 @@ name: Test
 on: push
 #on:
 #  push
-  #workflow_run:
-  #workflows: [ValidatePipeline]
-  #types: [completed]
+#workflow_run:
+#workflows: [ValidatePipeline]
+#types: [completed]
 
 jobs:
   use-minimal:
     uses: ./.github/workflows/minreuseflow.yaml
-    with:
-      name: "Minimal Reuse Example"
   test:
     runs-on: ubuntu-latest
     steps:
@@ -54,5 +52,4 @@ jobs:
         run: npm run build
       - name: Deploy project
         run: echo "Deploying..." ### This step simulates deployment
-
 
