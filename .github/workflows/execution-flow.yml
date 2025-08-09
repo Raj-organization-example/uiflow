@@ -28,6 +28,7 @@ jobs:
         run: npm run lint
   test:
     runs-on: ubuntu-latest
+    if: ${{ needs.lint.result == 'success' && github.ref_name == 'develop' && github.event.pull_request.draft == false }}
     steps:
       - name: Get code
         uses: actions/checkout@v4
