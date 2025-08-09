@@ -7,8 +7,8 @@ jobs:
     runs-on: ${{ matrix.os}} ## This job will run on the OS defined in the matrix
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest] ## Define the OS matrix
-        node-version: [16, 18] # Define the versions of Node.js to test against
+        os: [ubuntu-latest, windows-latest] ## Define the OS matrix
+        node-version: [12, 14, 16, 18] # Define the versions of Node.js to test against
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
