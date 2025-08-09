@@ -27,4 +27,4 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ inputs.node || matrix.node-version }} ## Use the input value or the matrix value for Node.js version
-      - run: echo "testing on ${{ metrix.operating-system }} with Node.js ${{ inputs.node || matrix.node-version }}"
+      - run: echo "testing on ${{ matrix.operating-system }} with Node.js ${{ inputs.node || matrix.node-version }}"
