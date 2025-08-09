@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: ${{ inputs.node }} ## Using the input for Node.js version
       - run: echo "Label ${{ inputs.lables }}" ## Using the input for labels
-      - if: ${{ input.run.tests}}
+      - if: ${{ inputs.run-tests}}
         run: echo "Running tests" ## This step will run only if the input 'run-tests' is true
       - run: echo "Node.js version is ${{ inputs.node }}" ## This step will run regardless of the input 'run-tests'
       - run: echo "Labels are ${{ inputs.run-tests }}" ## This step will run regardless of the input 'run-tests'
