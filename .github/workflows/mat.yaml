@@ -3,12 +3,23 @@ name: Matrix Example
 on: push
 
 jobs:
-  builds:
-    runs-on: ${{ matrix.os}} ## This job will run on the OS defined in the matrix
-    strategy:
-      matrix:
+  build:
+    continue-on-error: true ## This step will continue even if it fails, useful for testing purposes at job level, makes the entire job continue even if one step fails
+    strategy: ## This is used to define a matrix of jobs, allowing the same job to
+      fail-fast: false
+      max-parallel: 6 ## This option allows to limit the number of jobs that can run in parallel
+      matrix: ## This is used to define a matrix of jobs, allowing the same job to run on multiple configurations
         os: [ubuntu-latest, windows-latest] ## Define the OS matrix
         node-version: [12, 14, 16, 18] # Define the versions of Node.js to test against
+        include: ## This is used to include additional configurations in the matrix
+          - node-version: 18 ## This is the Node.js version to test against
+            os: ubuntu-latest
+          - node-version: 16 ## This is the Node.js version to test against
+            os: windows-latest
+        exclude: ## This is used to exclude configurations from the matrix
+          - node-version: 12 ## This is the Node.js version to exclude
+            os: windows-latest ## This is the operating system to exclude
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
