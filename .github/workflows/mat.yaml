@@ -7,7 +7,7 @@ jobs:
     continue-on-error: true ## This step will continue even if it fails, useful for testing purposes at job level, makes the entire job continue even if one step fails
     strategy: ## This is used to define a matrix of jobs, allowing the same job to
       fail-fast: false
-      max-parallel: 6 ## This option allows to limit the number of jobs that can run in parallel
+      max-parallel: 4 ## This option allows to limit the number of jobs that can run in parallel
       matrix: ## This is used to define a matrix of jobs, allowing the same job to run on multiple configurations
         os: [ubuntu-latest, windows-latest] ## Define the OS matrix
         python: [3.9, 3.10, 3.11, 3.12] # Define the versions of Node.js to test against
