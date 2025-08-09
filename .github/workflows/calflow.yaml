@@ -9,6 +9,13 @@ on: push
 jobs:
   use-minimal:
     uses: ./.github/workflows/minreuseflow.yaml
+  use-inputs:
+    uses: ./.github/workflows/reuse-with-inputs.yaml
+    with:
+      node: 18  ## This input is optional, if not provided the workflow will use the default value
+      run-tests: true ## This input is optional, if not provided the workflow will use the default value
+      labels: test ## This input is optional, if not provided the workflow will use the default value
+  
   test:
     runs-on: ubuntu-latest
     steps:
