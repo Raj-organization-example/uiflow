@@ -15,13 +15,8 @@ jobs:
         # Define the matrix for operating systems
         operating-system: [ubuntu-latest, windows-latest, macos-latest]
         include: ## This is used to include additional configurations in the matrix
-          - node-version: 18 ## This is the Node.js version to test against
-            operating-system: ubuntu-latest
           - node-version: 16 ## This is the Node.js version to test against
             operating-system: windows-latest
-        exclude: ## This is used to exclude configurations from the matrix
-          - node-version: 12 ## This is the Node.js version to exclude
-            operating-system: windows-latest ## This is the operating system to exclude
     runs-on: ${{ matrix.operating-system }}
     steps:
       - uses: actions/setup-node@v4
