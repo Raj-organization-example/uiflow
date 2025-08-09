@@ -15,7 +15,7 @@ on:
       labels:
         description: Labels to apply to the job
         required: false ## This input is optional
-        default: "test" ## This is the default value for the input, if not provided the workflow will use this value
+        default: test ## This is the default value for the input, if not provided the workflow will use this value
         type: string ## This is the type of the input, can be string, boolean, number, array, object, etc.
 jobs:
   run:
