@@ -15,6 +15,10 @@ jobs:
       node: 18 ## This input is optional, if not provided the workflow will use the default value
       run-tests: true ## This input is optional, if not provided the workflow will use the default value
       labels: test ## This input is optional, if not provided the workflow will use the default value
+  matrix-reuse:
+    uses: ./.github/workflows/matrixreusable.yaml
+    with:
+      node: 18 ## This input is optional, if not provided the workflow will use the default value
 
   test:
     runs-on: ubuntu-latest
