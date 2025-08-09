@@ -10,14 +10,14 @@ jobs:
       max-parallel: 6 ## This option allows to limit the number of jobs that can run in parallel
       matrix: ## This is used to define a matrix of jobs, allowing the same job to run on multiple configurations
         os: [ubuntu-latest, windows-latest] ## Define the OS matrix
-        node-version: [12, 14, 16, 18] # Define the versions of Node.js to test against
+        python: [3.9, 3.10, 3.11, 3.12] # Define the versions of Node.js to test against
         include: ## This is used to include additional configurations in the matrix
-          - node-version: 18 ## This is the Node.js version to test against
+          - python: 3.11 ## This is the Node.js version to test against
             os: ubuntu-latest
-          - node-version: 16 ## This is the Node.js version to test against
+          - python: 3.10 ## This is the Node.js version to test against
             os: windows-latest
         exclude: ## This is used to exclude configurations from the matrix
-          - node-version: 12 ## This is the Node.js version to exclude
+          - python: 3.9 ## This is the Node.js version to exclude
             os: windows-latest ## This is the operating system to exclude
     runs-on: ${{ matrix.os }}
     steps:
@@ -26,7 +26,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          python: ${{ matrix.python }}
       - name: Install dependencies
         run: npm install
       - name: Run tests
